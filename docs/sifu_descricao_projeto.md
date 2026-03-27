@@ -2,11 +2,12 @@
 **Sistema Integrado Funcional e Unificado | UFERSA**
 
 > **Processo escolhido:** Empréstimo ou Renovação de Material Informacional
-> **Portfólio EP:** https://ep.ufersa.edu.br/wp-content/uploads/portfolioep/ensino/emprestimoourenovacaodematerial/index.html#normal
+
+> **Portfólio EP:** [Link para Portfólio EP](https://ep.ufersa.edu.br/wp-content/uploads/portfolioep/ensino/emprestimoourenovacaodematerial/index.html#normal)
 
 ---
 
-## 1. Descrição do Problema a ser Solucionado
+## 1. Descrição do Problema a ser solucionado
 
 O projeto visa modernizar e otimizar o processo de **Empréstimo ou Renovação de Material Informacional** no âmbito da UFERSA. O novo módulo dentro do SIFU automatizará o controle de circulação do acervo, permitindo renovações online simplificadas e agilizando o check-out presencial com **validação automática de pendências do usuário**, substituindo verificações manuais por integrações de sistema.
 
@@ -43,7 +44,7 @@ A arquitetura é totalmente **Serverless** (gerenciada), o que elimina custos fi
 | **Amazon S3** | Armazenamento de objetos (Standard) |
 | **Amazon Route 53** | Gerenciamento de DNS |
 
-**URL pública da estimativa:** https://calculator.aws/#/estimate?id=218fa24340fda60abdd559238b59d4fcf05c0306
+**URL pública da estimativa:** [Link estimativa da aws calculator](https://calculator.aws/#/estimate?id=31a386baeabfbd1fcf7e824754d667bc5ef56bc9)
 
 ---
 
@@ -96,7 +97,7 @@ Usuário → Amplify (SPA)
 
 - **Nome do repositório:** `web-2026-1-fernando`
 - **Nome do usuário:** `fernandoalvess`
-- **URL:** `https://github.com/fernandoalvess/web-2026-1-fernando`
+- **URL:** [Link Repositório GitHub](https://github.com/fernandoalvess/web-2026-1-fernando)
 
 ---
 
@@ -104,24 +105,10 @@ Usuário → Amplify (SPA)
 
 A IA será implementada por meio de uma **função Lambda dedicada (Agente IA)**, que atua como um **orquestrador cognitivo** para o acervo da biblioteca.
 
-### 7.1 Busca Semântica (LLM + Vetores)
+### 7.1 Busca Semântica
 
 O usuário poderá fazer perguntas em linguagem natural sobre o acervo, como:
 
 > *"Quais livros de Engenharia de Software abordam metodologias ágeis e estão disponíveis?"*
 
-O agente transforma a pergunta em embeddings/vetores e realiza uma **busca semântica** no acervo, retornando os materiais mais relevantes — indo além de uma simples busca por palavras-chave.
-
-### 7.2 Chamadas de Ferramentas — Tool Use
-
-O Agente não será apenas um chat: ele terá acesso a **ferramentas internas do sistema**. Exemplos:
-
-> *"Renove todos os meus livros que vencem amanhã."*
-
-Neste caso, a IA irá:
-1. Interpretar a intenção do usuário;
-2. Extrair os dados relevantes (livros com vencimento no dia seguinte);
-3. Invocar a **ferramenta de renovação** do próprio sistema;
-4. Executar a ação real em nome do usuário e confirmar o resultado.
-
-Isso transforma o assistente em um agente que **age**, não apenas responde.
+O agente transforma a pergunta em embeddings/vetores e realiza uma **busca semântica** no acervo, retornando os materiais mais relevantes, indo além de uma simples busca por palavras-chave.
