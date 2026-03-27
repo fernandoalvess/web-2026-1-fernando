@@ -1,0 +1,42 @@
+@startuml sifu_arquitetura
+!theme plain
+
+actor "Usuário\n(Discente/Servidor)" as User
+
+package "Frontend Client (SPA)" {
+    component "AWS Amplify\n(React, TS, Tailwind)" as Amplify
+}
+
+cloud "AWS Cloud" {
+    component "Amazon Route 53\n(DNS)" as Route53
+    component "Amazon Cognito\n(Autenticação / JWT)" as Cognito
+    component "Amazon API Gateway\n(REST API)" as APIGW
+
+    package "Backend Serverless" {
+        component "Lambda (C.R.U.D)\nRegras de Negócio" as LambdaCRUD
+        component "Lambda (OBJ.)\nGerenciamento de Arquivos" as LambdaOBJ
+        component "Lambda (Agente IA)\nOrquestrador Cognitivo" as LambdaIA
+    }
+
+    database "Amazon DynamoDB\n(Banco NoSQL)" as DynamoDB
+    database "Amazon S3\n(Object Storage)" as S3
+}
+
+node "LLM\n(Busca Semântica)" as LLM
+
+User --> Route53 : Acessa o sistema
+Route53 --> Amplify : Direciona domínio
+Route53 --> APIGW : Roteamento
+
+Amplify --> Cognito : Login e Autorização
+Amplify --> APIGW : Requisições HTTP com Token
+
+APIGW --> LambdaCRUD : Distribui rota de dados
+APIGW --> LambdaOBJ : Distribui rota de arquivos
+APIGW --> LambdaIA : Distribui rota de IA
+
+LambdaCRUD --> DynamoDB : Lê/Escreve dados de empréstimo
+LambdaOBJ --> S3 : Upload/Download de PDFs e capas
+LambdaIA --> LLM : Transforma perguntas em vetores
+
+@enduml
